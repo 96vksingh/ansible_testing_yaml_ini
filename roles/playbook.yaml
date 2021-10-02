@@ -2,5 +2,4 @@
   remote_user: root
   become: yes
   roles:
-    - apache
-    - cleaner
+    - web-server

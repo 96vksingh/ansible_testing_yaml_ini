@@ -1,2 +1,6 @@
 ---
 # tasks file for DB
+- name: install maria db
+  yum:
+    name: mariadb
+    state: installed

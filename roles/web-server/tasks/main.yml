@@ -1,2 +1,10 @@
 ---
 # tasks file for web-server
+- name: install apache
+  yum:
+    name: httpd
+    state: installed
+- name: reload
+  yum:
+    name: https
+    state: reloaded

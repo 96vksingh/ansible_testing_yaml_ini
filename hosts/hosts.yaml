@@ -1,6 +1,25 @@
 all:
   hosts:
-    192.168.64.3
+    192.168.64.3:
+    smtp:
+    auth:
+    mail:
+  children:
+    itl:
+      children:
+        ldn:
+          hosts:
+            app1:
+            app2:
+        tex:
+          hosts:
+            app1:
+            app2:
+    dc:
+      children:
+        dc01:
+        dc02:
+
   children:
     customer1:
       children:
