@@ -1,0 +1,31 @@
+- hosts: web
+  remote_user: root
+  become: yes
+  tasks:
+  - name: package update
+    yum: 
+      name: '*'
+      state: latest
+  - name: install apache
+    yum: 
+      name: httpd
+      state: installed
+  - name: shell
+    shell: echo "hello from ansible challenge" > /var/www/html/index.html
+    args:
+      executable: /bin/bash
+    notify:
+      - Reload apache
+  - name: curl aws
+    shell:
+      cmd: curl http://169.254.169.254/latest/meta-data/public-ipv4
+    register: curl
+  handlers: 
+    - name: Reload apache
+      service:
+        name: httpd
+        state: reloaded
+
+        
+
+        

@@ -1,0 +1,12 @@
+all:
+  hosts:
+    192.168.64.3
+  children:
+    customer1:
+      children:
+        db:
+          hosts:
+            192.168.64.3
+        web:
+          hosts:
+            192.168.64.4

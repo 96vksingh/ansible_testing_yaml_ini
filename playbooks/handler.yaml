@@ -1,0 +1,40 @@
+- hosts: web
+  remote_user: root
+  become: yes
+  tasks:
+  - name: install apache
+    yum:
+      name: httpd
+      state: installed
+    notify:
+      - Restart apache
+  - name: install nano
+    yum:
+      name: nano
+      state: installed
+    notify:
+      - Restart apache
+  - name: install mysql
+    yum:
+      name: mysql
+      state: installed
+    notify:
+      - Restart apache
+
+  - name: remove apache
+    yum: 
+      name: httpd
+      state: removed
+  - name: remove nano
+    yum: 
+      name: nano
+      state: removed
+  - name: remove mysql
+    yum: 
+      name: mysql
+      state: removed
+  handlers:
+    - name: Restart apache
+      service:
+        name: httpd
+        state: restarted 

@@ -1,0 +1,10 @@
+---
+# tasks file for cleaner
+- name: uninstall apache
+  yum: 
+    name: httpd
+    state: removed
+- name: remove index file
+  file:
+    path: /var/www/html/index.html
+    state: absent

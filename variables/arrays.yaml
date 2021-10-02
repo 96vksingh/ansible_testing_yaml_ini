@@ -1,0 +1,11 @@
+- hosts: localhost
+  vars:
+    courses: 
+      - ansible
+      - teraform
+      - java
+      - python 
+  tasks:
+  - name: display value
+    debug:
+      msg: "{{ courses[0] }}"
